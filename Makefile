@@ -23,7 +23,7 @@ all:
 
 run: all
 	cp $(EXEC_NAME) $(FS_PATH)
-	make -C $(OS_PATH) run
+	(cd $(OS_PATH); ./createfs; ./run_virt)
 
 clean: 	
 	rm main.o
