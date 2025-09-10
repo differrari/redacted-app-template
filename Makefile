@@ -6,7 +6,7 @@ LD         := $(ARCH)-ld
 # Path to the [REDACTED] OS folder
 OS_PATH ?= ../os
 
-# Executable name (Due to a filesystem bug, keep the name at max 5 characters and extension at 3)
+# Executable name
 EXEC_NAME ?= proj.elf
 
 # Path to the system's libshared. Static link only for now
