@@ -16,6 +16,4 @@ Useful tips:
 - [REDACTED] OS has a `user` folder with a simple process used for testing and to show usage of syscalls and features of the system
 
 Current limitations & Known issues:
-- File names for the executable are currently limited by the standard file name lengths of FAT32 (5 characters for the name, 3 for the extension)
 - The libshared library currently gets statically linked to your project
-- GPU partial re-rendering can be buggy and not fully re-render the entire window. To bypass this limitation, redraw the entire window: `[draw_ctx].full_redraw = true;` 
