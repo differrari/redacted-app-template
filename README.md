@@ -17,3 +17,4 @@ Useful tips:
 
 Current limitations & Known issues:
 - The libshared library currently gets statically linked to your project
+- The elf file loader inside the system is quite dumb, it might not correctly handle all sections. For example: if the bss section is at the end of the file, the linker won't add the padding to the file and [REDACTED] won't allocate enough memory, possibly overwriting stack/heap or accessing unmapped memory. As a workaround, don't put bss at the end of the linker file
