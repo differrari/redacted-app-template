@@ -7,16 +7,16 @@ SECTIONS {
         *(.text .text.*)
     }
 
+    .bss : {
+        *(.bss .bss.* COMMON)
+    }
+
     .rodata : {
         *(.rodata .rodata.*)
     }
 
     .data : {
         *(.data .data.*)
-    }
-
-    .bss : {
-        *(.bss .bss.* COMMON)
     }
 
     /DISCARD/ : {
