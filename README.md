@@ -18,3 +18,4 @@ Useful tips:
 Current limitations & Known issues:
 - The libshared library currently gets statically linked to your project
 - The elf file loader inside the system is quite dumb, it might not correctly handle all sections. For example: if the bss section is at the end of the file, the linker won't add the padding to the file and [REDACTED] won't allocate enough memory, possibly overwriting stack/heap or accessing unmapped memory. As a workaround, don't put bss at the end of the linker file
+- Certain C language features (and possibly c++ and other languages), such as function pointers may not work well. This is due to the system not yet supporting virtual addresses or position-independent code. The best workaround is to avoid them. The second best is to patch the system to either always load the code at an address known ahead of time, or to create some basic virtual addressing support for it (PRs appreciated if it's not too hacky)
