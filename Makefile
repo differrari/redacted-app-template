@@ -14,19 +14,25 @@ STDINC ?= $(OS_PATH)/shared/
 STDLIB ?= $(OS_PATH)/shared/libshared.a
 CFLAGS ?= -ffreestanding -nostdlib -std=c99 -I$(STDINC) -O0
 FS_PATH ?= $(OS_PATH)/fs/redos/user/$(EXEC_NAME)
+C_SOURCE ?= $(shell find . -name '*.c')
+OBJ ?= $(C_SOURCE:%.c=%.o)
 
 .PHONY: dump
 
-all:
-	$(CC) $(CFLAGS) -c main.c -o main.o
-	$(LD) -T linker.ld -o $(EXEC_NAME) main.o $(STDLIB)
+%.o : %.c
+	$(CC) $(CFLAGS) -c -c $< -o $@
+
+$(EXEC_NAME): $(OBJ)
+	$(LD) -T linker.ld -o $(EXEC_NAME) $(OBJ) $(STDLIB)
+
+all: $(EXEC_NAME)
 
 run: all
 	cp $(EXEC_NAME) $(FS_PATH)
 	(cd $(OS_PATH); ./createfs; ./run_virt)
 
 clean: 	
-	rm main.o
+	rm $(OBJ)
 	rm $(EXEC_NAME)
 
 dump: all
