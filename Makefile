@@ -29,6 +29,7 @@ all: $(EXEC_NAME)
 
 package:
 	mkdir -p $(EXEC_NAME).red
+	mkdir -p resources
 	cp -r resources $(EXEC_NAME).red
 
 run: all
