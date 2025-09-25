@@ -32,8 +32,10 @@ package:
 	mkdir -p resources
 	cp -r resources $(EXEC_NAME).red
 
-run: all
+copy: all
 	cp -r $(EXEC_NAME).red $(FS_PATH)
+
+run: copy
 	(cd $(OS_PATH); ./createfs; ./run_virt)
 
 clean: 	
